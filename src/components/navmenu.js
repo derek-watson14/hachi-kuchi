@@ -4,6 +4,7 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 
 import menuIcon from "../images/menu-icon.png"
+import closeIcon from "../images/close-icon.png"
 
 const NavLinkContainer = styled.div`
   margin-left: auto;
@@ -37,8 +38,15 @@ const NavLink = styled(Link)`
 const IconContainer = styled.div`
   width: 40px;
   height: 40px;
-  margin: 0 3vw 0 auto;
+  margin: 0 4vw 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   img {
+    margin: 0;
+    padding: 0;
+  }
+  h2 {
     margin: 0;
     padding: 0;
   }
@@ -59,18 +67,29 @@ const HamburgerMenu = props => {
   const handleClick = () => {
     props.setDisplayNavModal(!props.displayNavModal)
   }
-  // * On img: onClick={handleClick}
-  return (
-    <IconContainer>
-      {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
+  let iconContents
+
+  if (props.displayNavModal) {
+    iconContents = (
+      <img
+        src={closeIcon}
+        alt=""
+        onClick={handleClick}
+        onKeyDown={handleClick}
+      />
+    )
+  } else {
+    iconContents = (
       <img
         src={menuIcon}
         alt=""
         onClick={handleClick}
         onKeyDown={handleClick}
       />
-    </IconContainer>
-  )
+    )
+  }
+
+  return <IconContainer>{iconContents}</IconContainer>
 }
 
 const NavMenu = props => {

@@ -16,7 +16,7 @@ const StyledHeader = styled.header`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 2;
 `
 
 const HeaderLogoLink = styled(Link)`
@@ -46,14 +46,17 @@ const HeaderLogo = styled.div`
   }
 `
 
-const Header = async props => {
-  // const initialScreenCheck = window.matchMedia("(max-width: 670px)").matches
+const Header = props => {
+  const initialScreenCheck = window.matchMedia("(max-width: 670px)").matches
 
-  const [smallScreen, setSmallScreen] = useState(false)
+  const [smallScreen, setSmallScreen] = useState(initialScreenCheck)
 
   useEffect(() => {
     const handleResize = () => {
       setSmallScreen(window.matchMedia("(max-width: 670px)").matches)
+      if (smallScreen) {
+        props.setDisplayNavModal(false)
+      }
     }
 
     window.addEventListener("resize", handleResize)
@@ -62,6 +65,8 @@ const Header = async props => {
       window.removeEventListener("resize", handleResize)
     }
   }, [])
+
+  // TODO: Figure out loading for banner image
 
   return (
     <StyledHeader>

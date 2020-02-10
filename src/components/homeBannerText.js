@@ -37,7 +37,7 @@ const TransparentBgP = styled.p`
   background-color: ${props => props.theme.darkTransBg};
   color: ${props => props.theme.white};
   padding: 5px;
-  margin: 0 0 10px 0;
+  margin: 0 7% 10px 0;
   width: auto;
 `
 

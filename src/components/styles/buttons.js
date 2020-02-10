@@ -8,6 +8,7 @@ export const BannerButtonContaner = styled.div`
 
   @media (max-width: 480px) {
     flex-direction: column;
+    width: 100%;
     height: 85px;
   }
 `

@@ -1,0 +1,8 @@
+Hachi Kuchi Colors:
+
+Orangeish Tan: #eddccb
+Orange1: #fca618
+Orange2: #f5a623
+Orange3: #feaa1b
+Orange4: #F2AE43
+Yellow: #ffe600

@@ -2,7 +2,9 @@ html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+  font-size: 6vw;
 }
+
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
@@ -61,7 +63,7 @@ dfn {
   font-style: italic;
 }
 h1 {
-  font-size: 2em;
+  font-size: 2rem;
   margin: 0.67em 0;
 }
 mark {
@@ -69,11 +71,11 @@ mark {
   color: #000;
 }
 small {
-  font-size: 80%;
+  font-size: 0.8rem;
 }
 sub,
 sup {
-  font-size: 75%;
+  font-size: 0.75rem;
   line-height: 0;
   position: relative;
   vertical-align: baseline;
@@ -82,7 +84,7 @@ sub {
   bottom: -0.25em;
 }
 sup {
-  top: -0.5em;
+  top: -0.5rem;
 }
 img {
   border-style: none;
@@ -95,10 +97,10 @@ kbd,
 pre,
 samp {
   font-family: monospace, monospace;
-  font-size: 1em;
+  font-size: 1rem;
 }
 figure {
-  margin: 1em 40px;
+  margin: 1rem 40px;
 }
 hr {
   box-sizing: content-box;
@@ -595,8 +597,8 @@ code {
   font-family: "SFMono-Regular", Consolas, "Roboto Mono", "Droid Sans Mono",
     "Liberation Mono", Menlo, Courier, monospace;
   padding: 0;
-  padding-top: 0.2em;
-  padding-bottom: 0.2em;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
 }
 pre code {
   background: none;
@@ -606,7 +608,7 @@ code:before,
 code:after,
 tt:before,
 tt:after {
-  letter-spacing: -0.2em;
+  letter-spacing: -0.2rem;
   content: " ";
 }
 pre code:before,
@@ -617,6 +619,6 @@ pre tt:after {
 }
 @media only screen and (max-width: 480px) {
   html {
-    font-size: 100%;
+    font-size: 1rem;
   }
 }

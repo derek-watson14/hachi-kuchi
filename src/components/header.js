@@ -1,35 +1,84 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import React from "react"
+import React, { useState, useEffect } from "react"
+import styled from "styled-components"
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
-)
+import AbbLogoTrans from "./images/abbLogoTrans"
+import NavMenu from "./navmenu"
+
+const StyledHeader = styled.header`
+  background: ${props => props.theme.orange};
+  height: ${props => props.theme.headerHeight};
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+`
+
+const HeaderLogoLink = styled(Link)`
+  color: ${props => props.theme.black};
+  text-decoration: none;
+  border: none;
+  &:hover {
+    color: ${props => props.theme.black};
+    border: none;
+  }
+`
+
+const HeaderLogo = styled.div`
+  max-width: 315px;
+  width: auto;
+  margin-left: 9vw;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: ${props => props.theme.orange};
+  h1 {
+    margin: 0 0 8px 8px;
+  }
+  @media (max-width: 900px) {
+    margin-left: 2vw;
+  }
+`
+
+const Header = async props => {
+  // const initialScreenCheck = window.matchMedia("(max-width: 670px)").matches
+
+  const [smallScreen, setSmallScreen] = useState(false)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setSmallScreen(window.matchMedia("(max-width: 670px)").matches)
+    }
+
+    window.addEventListener("resize", handleResize)
+
+    return () => {
+      window.removeEventListener("resize", handleResize)
+    }
+  }, [])
+
+  return (
+    <StyledHeader>
+      <HeaderLogoLink to="/">
+        <HeaderLogo>
+          <AbbLogoTrans />
+          <h1>{props.siteTitle}</h1>
+        </HeaderLogo>
+      </HeaderLogoLink>
+      <NavMenu
+        smallScreen={smallScreen}
+        displayNavModal={props.displayNavModal}
+        setDisplayNavModal={props.setDisplayNavModal}
+      />
+    </StyledHeader>
+  )
+}
 
 Header.propTypes = {
   siteTitle: PropTypes.string,

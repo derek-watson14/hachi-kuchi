@@ -2,7 +2,7 @@ import React from "react"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { ContentGrid, Wrapper } from "../components/styles/contentGrid"
+import { ContentGrid, Wrapper } from "../components/styles/content"
 
 const Calendar = props => {
   const modalOpen = props.location.state.modalOpen
@@ -14,7 +14,9 @@ const Calendar = props => {
       <SEO title="Calendar" />
       <ContentGrid>
         <Wrapper>
-          <h1>Calendar</h1>
+          <h1>Event Calendar</h1>
+        </Wrapper>
+        <Wrapper>
           <h3>Below are our upcoming events:</h3>
         </Wrapper>
       </ContentGrid>

@@ -18,8 +18,8 @@ const LogoContainer = styled.div`
   }
 `
 
-const IndexPage = props => {
-  const modalOpen = props.location.state.modalOpen
+const IndexPage = ({ location }) => {
+  const modalOpen = location.state ? location.state.modalOpen : false
   return (
     <Layout modalOpen={modalOpen}>
       <SEO title="Home" />

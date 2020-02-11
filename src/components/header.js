@@ -47,14 +47,15 @@ const HeaderLogo = styled.div`
 `
 
 const Header = props => {
-  const initialScreenCheck = window.matchMedia("(max-width: 670px)").matches
+  const initialScreenCheck = window.matchMedia("(max-width: 700px)").matches
 
   const [smallScreen, setSmallScreen] = useState(initialScreenCheck)
 
   useEffect(() => {
     const handleResize = () => {
-      setSmallScreen(window.matchMedia("(max-width: 670px)").matches)
-      if (smallScreen) {
+      setSmallScreen(window.matchMedia("(max-width: 700px)").matches)
+      console.log(smallScreen, props.displayNavModal)
+      if (!smallScreen && props.displayNavModal) {
         props.setDisplayNavModal(false)
       }
     }
@@ -64,7 +65,7 @@ const Header = props => {
     return () => {
       window.removeEventListener("resize", handleResize)
     }
-  }, [])
+  })
 
   // TODO: Figure out loading for banner image
 

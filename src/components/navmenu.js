@@ -5,13 +5,15 @@ import styled from "styled-components"
 
 import menuIcon from "../images/menu-icon.png"
 import closeIcon from "../images/close-icon.png"
+import { FaFacebookSquare } from "react-icons/fa"
 
 const NavLinkContainer = styled.div`
   margin-left: auto;
   margin-right: 10vw;
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto auto auto auto;
   grid-gap: 24px;
+  align-items: center;
   @media (max-width: 900px) {
     margin-right: 2vw;
     grid-gap: 8px;
@@ -21,13 +23,29 @@ const NavLinkContainer = styled.div`
 const NavLink = styled(Link)`
   color: ${props => props.theme.black};
   font-weight: 550;
-  text-align: center;
   letter-spacing: 0.1rem;
   padding: 12px 4px;
   text-decoration: none;
   margin: 0;
   transition: all 250ms;
   border-bottom: 2px solid ${props => props.theme.orange};
+  &:hover {
+    color: ${props => props.theme.tan};
+    background: ${props => props.theme.black};
+    border-bottom: 2px solid ${props => props.theme.tan};
+  }
+`
+
+const SocialLink = styled.a`
+  text-decoration: none;
+  color: ${props => props.theme.black};
+  padding: 12px 4px;
+  margin: 0;
+  transition: all 250ms;
+  border-bottom: 2px solid ${props => props.theme.orange};
+  display: flex;
+  align-items: center;
+  height: 51.6px;
   &:hover {
     color: ${props => props.theme.tan};
     background: ${props => props.theme.black};
@@ -57,9 +75,15 @@ const IconContainer = styled.div`
 
 const ExpandedChoices = () => (
   <NavLinkContainer>
-    <NavLink to="/attend/">Attend</NavLink>
+    <NavLink to="/perform/">Perform</NavLink>
     <NavLink to="/teach/">Teach</NavLink>
     <NavLink to="/calendar/">Calendar</NavLink>
+    <SocialLink
+      href="https://www.facebook.com/hachikuchiartistcollective/"
+      target="_blank"
+    >
+      <FaFacebookSquare size={22} />
+    </SocialLink>
   </NavLinkContainer>
 )
 
@@ -73,7 +97,7 @@ const HamburgerMenu = props => {
     iconContents = (
       <img
         src={closeIcon}
-        alt=""
+        alt="close navigation"
         onClick={handleClick}
         onKeyDown={handleClick}
       />
@@ -82,7 +106,7 @@ const HamburgerMenu = props => {
     iconContents = (
       <img
         src={menuIcon}
-        alt=""
+        alt="open navigation"
         onClick={handleClick}
         onKeyDown={handleClick}
       />

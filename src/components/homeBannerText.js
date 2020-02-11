@@ -49,21 +49,17 @@ const HomeBannerText = () => {
       <TransparentBgH1>This is Hachi Kuchi.</TransparentBgH1>
       <TransparentBgP>
         We are an artist collective based in Silverdale, Washington which meets
-        every Saturday at 6pm.
+        monthly to share, collaborate and learn.
       </TransparentBgP>
       <TransparentBgP>
         <strong>We'd love to have you join us.</strong>
       </TransparentBgP>
       <BannerButtonContaner buttonCount={2}>
-        <Link to="/teach/">
-          <TransparentButton color={theme.orange}>
-            Teach a class
-          </TransparentButton>
+        <Link to="/perform/">
+          <TransparentButton color={theme.orange}>Perform</TransparentButton>
         </Link>
-        <Link to="/attend/">
-          <TransparentButton color={theme.orange}>
-            Attend an event
-          </TransparentButton>
+        <Link to="/teach/">
+          <TransparentButton color={theme.orange}>Teach</TransparentButton>
         </Link>
       </BannerButtonContaner>
     </StyledBannerText>

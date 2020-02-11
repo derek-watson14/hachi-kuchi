@@ -50,21 +50,28 @@ export const OpaqueButton = styled.button`
   }
 `
 
-export const OpaqueButtonLarge = styled.button`
-    background: #fca618;
-    color: rgba(0, 0, 0, 0.9);
-    border: 2px solid #fca618;
+export const LinkButtonLarge = styled.button`
+    background: ${props => props.theme.orange};
+    border: 2px solid ${props => props.theme.orange};
     border-radius: 5px;
-    padding: 5px;
-    width: 200px;
+    padding: 5px 10px;
     font-size: 1.2rem;
     transition: all 0.2s;
+    margin-bottom: 15px;
+
+    a {
+      text-decoration: none;
+      font-size: 1rem;
+      color: ${props => props.theme.black};
+      display: grid;
+      grid-gap: 5px;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+    }
 
     &:hover {
-      background: transparent;
-      border: 2px solid #fca618;
-      color: #fca618;
       cursor: pointer;
+      transform: scale(1.05);
     }
   }
 `

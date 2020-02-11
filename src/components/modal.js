@@ -1,10 +1,16 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 import { CSSTransition } from "react-transition-group"
 
-import facebookBlack from "../images/facebook-black.png"
+import facebookLogo from "../images/facebook-logo.png"
+import {
+  FaHome,
+  FaMicrophone,
+  FaCalendarAlt,
+  FaChalkboardTeacher,
+} from "react-icons/fa"
 
 const ModalContainer = styled.div`
   min-height: calc(100vh - ${props => props.theme.headerHeight});
@@ -34,32 +40,51 @@ const InnerModal = styled.div`
       cursor: pointer;
       background: ${props => props.theme.black};
       color: ${props => props.theme.tan};
+      img {
+        border-right: 1px solid ${props => props.theme.tan};
+      }
     }
+  }
+  img {
+    padding: 0 6px 0 0;
+    border-right: 1px solid ${props => props.theme.black};
+    margin: 0 8px 0 0;
   }
 `
 
-const SocialLinkContainer = styled.div`
-  height: 50px;
-  display: flex;
-  justify-content: center;
+const FacebookLink = styled.a`
+  margin: auto 0 0 0;
+`
+
+const ModalLinkText = styled.h3`
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 10px;
   align-items: center;
-  img {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-  }
 `
 
 const Modal = ({ displayNavModal, setDisplayNavModal }) => {
+  let inner = React.createRef()
+
   const handleClick = e => {
     if (e.target !== inner.current) {
       setDisplayNavModal(false)
     }
   }
 
-  let inner = React.createRef()
+  useEffect(() => {
+    const handleKeyPress = e => {
+      if (displayNavModal && e.key === "Escape") {
+        setDisplayNavModal(false)
+        document.removeEventListener("keydown", handleKeyPress)
+      }
+    }
 
-  // TODO: Close Modal with escape key
+    if (displayNavModal) {
+      document.addEventListener("keydown", handleKeyPress)
+    }
+  })
+
   // TODO: add social media icons/links at bottom of nav links
 
   return (
@@ -72,17 +97,35 @@ const Modal = ({ displayNavModal, setDisplayNavModal }) => {
       <ModalContainer onClick={handleClick}>
         <InnerModal ref={inner}>
           <Link to="/" state={{ modalOpen: displayNavModal }}>
-            <h3>Home</h3>
+            <ModalLinkText>
+              <FaHome />
+              Home
+            </ModalLinkText>
           </Link>
-          <Link to="/attend/" state={{ modalOpen: displayNavModal }}>
-            <h3>Attend</h3>
+          <Link to="/perform/" state={{ modalOpen: displayNavModal }}>
+            <ModalLinkText>
+              <FaMicrophone /> Perform
+            </ModalLinkText>
           </Link>
           <Link to="/teach/" state={{ modalOpen: displayNavModal }}>
-            <h3>Teach</h3>
+            <ModalLinkText>
+              <FaChalkboardTeacher /> Teach
+            </ModalLinkText>
           </Link>
           <Link to="/calendar/" state={{ modalOpen: displayNavModal }}>
-            <h3>Calender</h3>
+            <ModalLinkText>
+              <FaCalendarAlt /> Events
+            </ModalLinkText>
           </Link>
+          <FacebookLink
+            href="https://www.facebook.com/hachikuchiartistcollective/"
+            target="_blank"
+          >
+            <h3>
+              <img src={facebookLogo} alt="facebookLogo" height="22px" />
+              Join us on Facebook
+            </h3>
+          </FacebookLink>
         </InnerModal>
       </ModalContainer>
     </CSSTransition>

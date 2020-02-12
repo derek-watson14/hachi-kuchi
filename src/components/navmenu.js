@@ -2,7 +2,6 @@ import { Link } from "gatsby"
 import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
-import Media from "react-media"
 
 import menuIcon from "../images/menu-icon.png"
 import closeIcon from "../images/close-icon.png"
@@ -119,18 +118,16 @@ const HamburgerMenu = props => {
 
 const NavMenu = props => {
   return (
-    <Media queries={{ large: { minWidth: 700 } }}>
-      {matches =>
-        matches.large ? (
-          <ExpandedChoices />
-        ) : (
-          <HamburgerMenu
-            displayNavModal={props.displayNavModal}
-            setDisplayNavModal={props.setDisplayNavModal}
-          />
-        )
-      }
-    </Media>
+    <>
+      {props.smallScreen ? (
+        <HamburgerMenu
+          displayNavModal={props.displayNavModal}
+          setDisplayNavModal={props.setDisplayNavModal}
+        />
+      ) : (
+        <ExpandedChoices />
+      )}
+    </>
   )
 }
 

@@ -47,9 +47,22 @@ const HeaderLogo = styled.div`
 `
 
 const Header = props => {
+  const isSmallScreen = () => {
+    console.log(
+      "Is Small Screen",
+      window,
+      window.matchMedia("(max-width: 700px)").matches
+    )
+    if (window !== undefined) {
+      return window.matchMedia("(max-width: 700px)").matches
+    }
+  }
+
+  const [smallScreen, setSmallScreen] = useState(isSmallScreen)
+
   useEffect(() => {
     const handleResize = () => {
-      const smallScreen = window.matchMedia("(max-width: 700px)").matches
+      setSmallScreen(window.matchMedia("(max-width: 700px)").matches)
       if (!smallScreen && props.displayNavModal) {
         props.setDisplayNavModal(false)
       }
@@ -73,6 +86,7 @@ const Header = props => {
         </HeaderLogo>
       </HeaderLogoLink>
       <NavMenu
+        smallScreen={smallScreen}
         displayNavModal={props.displayNavModal}
         setDisplayNavModal={props.setDisplayNavModal}
       />

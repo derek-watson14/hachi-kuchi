@@ -47,11 +47,11 @@ const HeaderLogo = styled.div`
 `
 
 const Header = props => {
-  const [smallScreen, setSmallScreen] = useState(getInitialWidth)
-
   const getInitialWidth = () => {
     return window.matchMedia("(max-width: 700px)").matches
   }
+
+  const [smallScreen, setSmallScreen] = useState(getInitialWidth)
 
   useEffect(() => {
     const handleResize = () => {

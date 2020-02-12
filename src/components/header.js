@@ -73,7 +73,6 @@ const Header = props => {
         </HeaderLogo>
       </HeaderLogoLink>
       <NavMenu
-        smallScreen={smallScreen}
         displayNavModal={props.displayNavModal}
         setDisplayNavModal={props.setDisplayNavModal}
       />

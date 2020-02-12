@@ -119,15 +119,15 @@ const HamburgerMenu = props => {
 
 const NavMenu = props => {
   return (
-    <Media queries={{ small: { maxWidth: 699 } }}>
+    <Media queries={{ large: { minWidth: 700 } }}>
       {matches =>
-        matches.small ? (
+        matches.large ? (
+          <ExpandedChoices />
+        ) : (
           <HamburgerMenu
             displayNavModal={props.displayNavModal}
             setDisplayNavModal={props.setDisplayNavModal}
           />
-        ) : (
-          <ExpandedChoices />
         )
       }
     </Media>

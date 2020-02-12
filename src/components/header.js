@@ -49,7 +49,7 @@ const HeaderLogo = styled.div`
 const Header = props => {
   let initialScreenCheck
   if (typeof window !== `undefined`) {
-    window.matchMedia("(max-width: 700px)").matches
+    initialScreenCheck = window.matchMedia("(max-width: 700px)").matches
   }
 
   const [smallScreen, setSmallScreen] = useState(initialScreenCheck)

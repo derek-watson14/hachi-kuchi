@@ -48,13 +48,10 @@ const HeaderLogo = styled.div`
 
 const Header = props => {
   const isSmallScreen = () => {
-    console.log(
-      "Is Small Screen",
-      window,
-      window.matchMedia("(max-width: 700px)").matches
-    )
     if (window !== undefined) {
       return window.matchMedia("(max-width: 700px)").matches
+    } else {
+      return false
     }
   }
 

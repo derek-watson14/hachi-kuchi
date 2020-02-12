@@ -73,6 +73,9 @@ const IconContainer = styled.div`
   }
 `
 
+// TODO: Combine Expanded Choices and HamMenu into one component
+// ! Use CSS media queries for display
+
 const ExpandedChoices = () => (
   <NavLinkContainer>
     <NavLink to="/perform/">Perform</NavLink>

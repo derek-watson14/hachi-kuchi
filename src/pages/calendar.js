@@ -4,8 +4,8 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { ContentGrid, Wrapper } from "../components/styles/content"
 
-const Calendar = props => {
-  const modalOpen = props.location.state.modalOpen
+const Calendar = ({ location }) => {
+  const modalOpen = location.state ? location.state.modalOpen : false
 
   // TODO: Design compenent with props that holds calendar events
   // * Should have a more info event that will expand with more info if available

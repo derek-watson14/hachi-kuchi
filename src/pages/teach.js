@@ -7,8 +7,8 @@ import { Link } from "gatsby"
 import { LinkButtonLarge } from "../components/styles/buttons"
 import { TiArrowForward } from "react-icons/ti"
 
-const Teach = props => {
-  const modalOpen = props.location.state.modalOpen
+const Teach = ({ location }) => {
+  const modalOpen = location.state ? location.state.modalOpen : false
 
   return (
     <Layout modalOpen={modalOpen}>

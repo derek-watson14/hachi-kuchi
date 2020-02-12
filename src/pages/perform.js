@@ -6,10 +6,10 @@ import { ContentGrid, Wrapper, SmallPara } from "../components/styles/content"
 import { Link } from "gatsby"
 import { LinkButtonLarge } from "../components/styles/buttons"
 import { TiArrowForward } from "react-icons/ti"
-import { ThemeContext } from "styled-components"
 
-const Perform = props => {
-  const modalOpen = props.location.state.modalOpen
+const Perform = ({ location }) => {
+  const modalOpen = location.state ? location.state.modalOpen : false
+
   return (
     <Layout modalOpen={modalOpen}>
       <SEO title="Perform" />

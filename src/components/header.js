@@ -47,12 +47,9 @@ const HeaderLogo = styled.div`
 `
 
 const Header = props => {
-  const [smallScreen, setSmallScreen] = useState(true)
-
   useEffect(() => {
     const handleResize = () => {
-      setSmallScreen(window.matchMedia("(max-width: 700px)").matches)
-      console.log(smallScreen, props.displayNavModal)
+      const smallScreen = window.matchMedia("(max-width: 700px)").matches
       if (!smallScreen && props.displayNavModal) {
         props.setDisplayNavModal(false)
       }

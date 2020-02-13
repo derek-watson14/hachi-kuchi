@@ -7,6 +7,24 @@ import menuIcon from "../images/menu-icon.png"
 import closeIcon from "../images/close-icon.png"
 import { FaFacebookSquare } from "react-icons/fa"
 
+const NavDisplaySwitch = styled.div`
+  margin-left: auto;
+  .nav-expanded {
+    display: grid;
+  }
+  .nav-hamburger {
+    display: none;
+  }
+  @media (max-width: 699px) {
+    .nav-expanded {
+      display: none;
+    }
+    .nav-hamburger {
+      display: flex;
+    }
+  }
+`
+
 const NavLinkContainer = styled.div`
   margin-left: auto;
   margin-right: 10vw;
@@ -77,7 +95,7 @@ const IconContainer = styled.div`
 // ! Use CSS media queries for display
 
 const ExpandedChoices = () => (
-  <NavLinkContainer>
+  <NavLinkContainer className="nav-expanded">
     <NavLink to="/perform/">Perform</NavLink>
     <NavLink to="/teach/">Teach</NavLink>
     <NavLink to="/calendar/">Calendar</NavLink>
@@ -116,21 +134,18 @@ const HamburgerMenu = props => {
     )
   }
 
-  return <IconContainer>{iconContents}</IconContainer>
+  return <IconContainer className="nav-hamburger">{iconContents}</IconContainer>
 }
 
 const NavMenu = props => {
   return (
-    <>
-      {props.smallScreen ? (
-        <HamburgerMenu
-          displayNavModal={props.displayNavModal}
-          setDisplayNavModal={props.setDisplayNavModal}
-        />
-      ) : (
-        <ExpandedChoices />
-      )}
-    </>
+    <NavDisplaySwitch>
+      <ExpandedChoices />
+      <HamburgerMenu
+        displayNavModal={props.displayNavModal}
+        setDisplayNavModal={props.setDisplayNavModal}
+      />
+    </NavDisplaySwitch>
   )
 }
 

@@ -53,7 +53,7 @@ const InnerModal = styled.div`
 `
 
 const FacebookLink = styled.a`
-  margin: auto 0 67px 0;
+  margin-top: 134px;
 `
 
 const ModalLinkText = styled.h3`

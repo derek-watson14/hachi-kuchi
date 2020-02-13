@@ -1,6 +1,6 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import React, { useState, useEffect } from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
 
 import AbbLogoTrans from "./images/abbLogoTrans"
@@ -47,20 +47,10 @@ const HeaderLogo = styled.div`
 `
 
 const Header = props => {
-  const isSmallScreen = () => {
-    if (window !== undefined) {
-      return window.matchMedia("(max-width: 700px)").matches
-    } else {
-      return false
-    }
-  }
-
-  const [smallScreen, setSmallScreen] = useState(isSmallScreen)
-
   useEffect(() => {
     const handleResize = () => {
-      setSmallScreen(window.matchMedia("(max-width: 700px)").matches)
-      if (!smallScreen && props.displayNavModal) {
+      const isBigScreen = window.matchMedia("(min-width: 700px)").matches
+      if (isBigScreen && props.displayNavModal) {
         props.setDisplayNavModal(false)
       }
     }
@@ -83,7 +73,6 @@ const Header = props => {
         </HeaderLogo>
       </HeaderLogoLink>
       <NavMenu
-        smallScreen={smallScreen}
         displayNavModal={props.displayNavModal}
         setDisplayNavModal={props.setDisplayNavModal}
       />

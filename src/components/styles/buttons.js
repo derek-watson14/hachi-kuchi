@@ -3,10 +3,10 @@ import styled from "styled-components"
 export const BannerButtonContaner = styled.div`
   display: flex;
   justify-content: space-between;
-  width: calc(${props => props.buttonCount} * 185px);
+  width: calc(${props => props.buttonCount} * 160px);
   margin-top: 15px;
 
-  @media (max-width: 480px) {
+  @media (max-width: 375px) {
     flex-direction: column;
     width: 100%;
     height: 85px;
@@ -19,7 +19,7 @@ export const TransparentButton = styled.button`
     border: 2px solid ${props => props.color};
     border-radius: 5px;
     padding: 5px;
-    width: 175px;
+    width: 150px;
     font-size: 1.2rem;
     transition: all 0.2s;
 

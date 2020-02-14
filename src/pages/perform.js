@@ -15,7 +15,7 @@ const Perform = ({ location }) => {
       <SEO title="Perform" />
       <ContentGrid>
         <Wrapper>
-          <h1>Perform</h1>
+          <h1 className="solo-h1">Perform</h1>
         </Wrapper>
         <Wrapper>
           <h3>No matter your art form - share your talent with others</h3>
@@ -25,7 +25,7 @@ const Perform = ({ location }) => {
           </p>
           <p>
             There is a part of each event called <strong>Open Session</strong>,
-            where artists have the opportunity to perform in front of thier
+            where artists have the opportunity to perform in front of their
             peers in a relaxed, welcoming environment. We are here to help with
             logistics in any way we can.
           </p>

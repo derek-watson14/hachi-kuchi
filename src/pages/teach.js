@@ -15,7 +15,7 @@ const Teach = ({ location }) => {
       <SEO title="Teach" />
       <ContentGrid>
         <Wrapper>
-          <h1>Teach</h1>
+          <h1 className="solo-h1">Teach</h1>
         </Wrapper>
         <Wrapper>
           <h3>Do you have an artisitic talent you would like to share?</h3>

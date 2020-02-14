@@ -1,7 +1,5 @@
-import React from "react"
-import styled from "styled-components"
-
-import { ContentGrid, Wrapper } from "../components/styles/content"
+import React, { useContext } from "react"
+import styled, { ThemeContext } from "styled-components"
 
 const EventContainer = styled.div`
   width: 100%;
@@ -9,6 +7,10 @@ const EventContainer = styled.div`
   background: ${props => props.theme.white};
   border-radius: 8px;
   margin-bottom: 20px;
+  grid-column: 2 / span 1;
+  box-shadow: ${props => props.theme.bs};
+  border-radius: 5px;
+  margin-bottom: 25px;
   display: grid;
   grid-template-columns: 1fr 5fr;
   grid-template-rows: 1fr;
@@ -22,21 +24,33 @@ const EventContainer = styled.div`
 `
 
 const DateBox = styled.div`
-  border: 2px solid ${props => props.theme.orange};
-  border-radius: 5px;
   background: ${props => props.theme.white};
-  display: grid;
-  grid-template-columns: 100px;
-  grid-template-rows: repeat(4, 25px);
-  grid-template-areas:
-    "date"
-    "date"
-    "date"
-    "day";
-  justify-content: center;
-  align-items: center;
-  width: 100px;
   justify-self: center;
+  .calendar-box {
+    display: grid;
+    grid-template-columns: 100px;
+    grid-template-rows: repeat(5, 20px);
+    grid-template-areas:
+      "date"
+      "date"
+      "date"
+      "date"
+      "day";
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    border: 2px solid ${props => props.color};
+    border-radius: 5px;
+  }
+  .month {
+    grid-area: month;
+    text-align: center;
+    margin: 0 0 5px 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+    background: ${props => props.theme.white};
+    color: ${props => props.theme.black};
+  }
   .date {
     grid-area: date;
     text-align: center;
@@ -46,7 +60,7 @@ const DateBox = styled.div`
     grid-area: day;
     text-align: center;
     margin: 0;
-    background: ${props => props.theme.orange};
+    background: ${props => props.color};
     color: ${props => props.theme.white};
   }
   @media (max-width: 525px) {
@@ -76,22 +90,50 @@ const InfoBox = styled.div`
   }
 `
 
-const EventContainer2 = props => {
+const Event = props => {
+  const theme = useContext(ThemeContext)
+  const isCG = props.event.title === "Community Gathering"
+
+  const getCalendarColor = eventType => {
+    let calendarColor
+    switch (eventType) {
+      case "Community Gathering":
+        calendarColor = theme.orange
+        break
+      case "Video Podcast Production":
+        calendarColor = theme.green
+        break
+      case "Board Game Night":
+        calendarColor = theme.green
+        break
+      case "Music Exploration":
+        calendarColor = theme.green
+        break
+      default:
+        calendarColor = theme.green
+        break
+    }
+    return calendarColor
+  }
+
   return (
     <EventContainer>
-      <DateBox>
-        <h1 className="date">{props.sample.date}</h1>
-        <p className="day">{props.sample.day}</p>
+      <DateBox color={getCalendarColor(props.event.title)}>
+        <h4 className="month">{props.event.month}</h4>
+        <div className="calendar-box">
+          <h1 className="date">{props.event.date}</h1>
+          <p className="day">{props.event.day}</p>
+        </div>
       </DateBox>
       <InfoBox>
-        <h3 className="event-title">{props.sample.title}</h3>
+        <h3 className="event-title">{props.event.title}</h3>
         <hr className="divider" />
-        <h6 className="address">{props.sample.address}</h6>
-        <p className="event-info">{props.sample.info}</p>
-        <h5 className="time-contact">{props.sample.contact}</h5>
+        <h6 className="address">{props.event.address}</h6>
+        <p className="event-info">{props.event.info}</p>
+        <h5 className="time-contact">{props.event.contact}</h5>
       </InfoBox>
     </EventContainer>
   )
 }
 
-export default EventContainer2
+export default Event

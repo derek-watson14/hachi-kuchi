@@ -27,7 +27,7 @@ const IndexPage = ({ location }) => {
       <SEO title="Home" />
       <HomeBanner />
       <ContentGrid>
-        <Wrapper background="#F5F5F5">
+        <Wrapper>
           <div className="section">
             <h2>Mission</h2>
             <p>
@@ -56,35 +56,45 @@ const IndexPage = ({ location }) => {
           </div>
           <div className="section">
             <h2>Contact</h2>
-            <div className="contact-section">
-              <h4>Community Gatherings</h4>
-              <h5>
-                Director: <span>Tyler Smiley - (360) 621-9721</span>
-              </h5>
-              <h5>
-                Booking Manager: <span>Jeffery Hennings - (206) 898-1994</span>
-              </h5>
-              <h5>
-                Booth Manager: <span>Robby Vandenhole - (360) 201-7214</span>
-              </h5>
-            </div>
-            <div className="contact-section">
-              <h4>Music Exploration</h4>
-              <h5>
-                Chair: <span>Tyler Smiley - (360) 621-9721</span>
-              </h5>
-            </div>
-            <div className="contact-section">
-              <h4>Video Podcast</h4>
-              <h5>
-                Chair: <span>Robby Vandenhole - (360) 201-7214</span>
-              </h5>
-            </div>
-            <div className="contact-section">
-              <h4>Board Game Night</h4>
-              <h5>
-                Chair: <span>Tyler Smiley - (360) 271-7610</span>
-              </h5>
+            <div className="contact-container">
+              <div className="contact-section">
+                <h4>Community Gatherings</h4>
+                <hr />
+                <h5>
+                  Director: <span>Tyler Smiley - (360) 621-9721</span>
+                </h5>
+                <h5>
+                  Booking Manager:{" "}
+                  <span>Jeffery Hennings - (206) 898-1994</span>
+                </h5>
+                <h5>
+                  Booth Manager: <span>Robby Vandenhole - (360) 201-7214</span>
+                </h5>
+                <h5>
+                  General Inquiries: <span>hachikuchi@gmail.com</span>
+                </h5>
+              </div>
+              <div className="contact-section">
+                <h4>Music Exploration</h4>
+                <hr />
+                <h5>
+                  Chair: <span>Tyler Smiley - (360) 621-9721</span>
+                </h5>
+              </div>
+              <div className="contact-section">
+                <h4>Video Podcast</h4>
+                <hr />
+                <h5>
+                  Chair: <span>Robby Vandenhole - (360) 201-7214</span>
+                </h5>
+              </div>
+              <div className="contact-section">
+                <h4>Board Game Night</h4>
+                <hr />
+                <h5>
+                  Chair: <span>Tyler Smiley - (360) 271-7610</span>
+                </h5>
+              </div>
             </div>
           </div>
         </Wrapper>

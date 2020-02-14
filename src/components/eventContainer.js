@@ -92,16 +92,12 @@ const InfoBox = styled.div`
 
 const Event = props => {
   const theme = useContext(ThemeContext)
-  const isCG = props.event.title === "Community Gathering"
 
   const getCalendarColor = eventType => {
     let calendarColor
     switch (eventType) {
       case "Community Gathering":
         calendarColor = theme.orange
-        break
-      case "Video Podcast Production":
-        calendarColor = theme.green
         break
       case "Board Game Night":
         calendarColor = theme.green

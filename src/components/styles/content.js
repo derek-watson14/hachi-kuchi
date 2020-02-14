@@ -48,10 +48,10 @@ export const Wrapper = styled.div`
   .section {
     margin-bottom: 30px;
     h2 {
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
     h4 {
-      margin-bottom: 12px;
+      margin-bottom: 5px;
     }
     h5 {
       margin-bottom: 8px;
@@ -61,12 +61,26 @@ export const Wrapper = styled.div`
     }
   }
 
+  .contact-container {
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: 1fr;
+    margin-bottom: 20px;
+    @media (min-width: 1100px) {
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 25px;
+    }
+  }
+
   .contact-section {
-    margin-bottom: 15px;
     padding: 10px;
     border-radius: 5px;
     box-shadow: ${props => props.theme.bs};
-    width: auto;
+    grid-column: span 1;
+
+    hr {
+      margin: 0px 0 15px 0;
+    }
   }
 
   @media (max-width: 625px) {
